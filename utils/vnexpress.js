@@ -6,7 +6,7 @@ const { regexList } = require('./regex_list');
 async function getRSSData(url) {
   try {
     const response = await axios.get(url);
-    if (response.status === 200) {
+    if (response.status !== 200) {
       return;
     }
     
@@ -40,6 +40,9 @@ async function storeRSS(data) {
 async function storePostData(id) {
   let news = await News.findById(id);
   let html = await getPostData(news.link);
+  if (!html) {
+    return;
+  }
 
   let description = await getMatch(html, regexList.description);
   let localStamp = await getMatch(description, regexList.localStamp);
@@ -79,6 +82,9 @@ async function storePostData(id) {
 async function getPostData(url) {
   try {
     let res = await axios(url);
+    if (res.status !== 200) {
+      return null;
+    }
     return res.data;
   } catch (e) {
     console.error(e);
