@@ -4,6 +4,7 @@ const regexList = {
   images: /<img.*?alt="(.*)".*class.*?data-src="(.*)">/mg,
   infomation: /<div class="box_brief_info">(.*?)<\/div>/gs,
   author: /<p class="author_mail">.*?<strong>(.*)<\/strong>.*?<\/p>/gs,
+  author2: /<p><p style="text-align:right;"><strong>(.*?)<\/strong><\/p><\/p>/gs,
   authorWithSource: /<p class="Normal" style="text-align:right;">(.*?)<\/p>/g,
   contents: /<p class="Normal">(.*)<\/p>/gm,
   localStamp: /<span class="location-stamp">(.*?)<\/span>/gs,

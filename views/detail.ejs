@@ -1,0 +1,14 @@
+<h1><%= news.title %></h1>
+Description<br>
+<%- news.description %>
+
+<br>Content
+<%- news.content %>
+
+<% if (news.information) { %>
+    Information
+    <%- news.information %>
+<% } %>
+
+<br>Author
+<%= news.author %>

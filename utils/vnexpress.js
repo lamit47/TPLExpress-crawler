@@ -57,9 +57,13 @@ async function storePostData(id) {
   }
   let author = await getMatch(detail, regexList.author);
   if (!author) {
-    author = await getMatch(detail, regexList.authorWithSource);
-    author = author.replace(regexList.allTag, '');
-    detail = detail.replace(regexList.authorWithSource, '');
+    try {
+      author = await getMatch(detail, regexList.authorWithSource);
+      author = author.replace(regexList.allTag, '');
+      detail = detail.replace(regexList.authorWithSource, '');
+    } catch (e) {
+      author = await getMatch(detail, regexList.author2);
+    }
   } else {
     detail = detail.replace(regexList.author, '');
   }
