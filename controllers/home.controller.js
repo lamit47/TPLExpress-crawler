@@ -3,7 +3,7 @@ const { News } = require('../models/news');
 const homeView = async function (req, res) {
     let list = await News.find({ success: true }).select('title _id');
     return res.render('home', {
-        title: 'Homepage',
+        title: 'Trang chủ',
         list: list
     });
 }
